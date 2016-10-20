@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.company.transport.pojo.User;
 import com.company.transport.service.UserService;
+import com.company.utils.encode.Encode;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -29,22 +30,13 @@ public class UserTest {
 	
 	@Test
 	public void test1() throws Exception {
-		User user = userService.getUserById(1);
-		MessageDigest md = MessageDigest.getInstance("MD5");
-		Base64 base64 = new Base64();
 		
-		byte[] b = md.digest(user.getPassword().getBytes("utf-8"));
+		User user = new User();
+		user.setUsername("111");
+		user.setPassword("111");
 		
-		String md5 = new String(b);
-		
-		b = base64.encode(b);
-		
-		String base4  = new String(b);
-		
-		
-		logger.info(user.getPassword());
-		logger.info(md5);
-		logger.info(base4);
+		logger.info(Encode.enCodePassword("111"));
+		logger.info(userService.login(user));
 	}
 	
 	

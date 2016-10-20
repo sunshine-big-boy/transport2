@@ -10,7 +10,7 @@ public interface UserDao {
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(Integer id);
+    User selectByName(String name);
 
     int updateByPrimaryKeySelective(User record);
 
