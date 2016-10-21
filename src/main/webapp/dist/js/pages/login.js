@@ -35,7 +35,8 @@ function login() {
 					$("#message-block").html("输入密码错误！").css("color", "red");
 					$("#password").val("");
 				} else {
-					window.location.href = "main.html?username="+username;
+					$.cookie("username",username);
+					window.location.href = data.url;
 				}
 			},
 			error : function(err) {

@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,9 @@ public class UserController {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value="/login",method={RequestMethod.POST})
-	public Map login(@RequestBody User user,Map map) throws Exception{
+	public Map login(@RequestBody User user,HttpSession session) throws Exception{
+		
+		Map data = new HashMap();
 		
 		if(user.getUsername() == null||user.getUsername().equals("")){
 			throw new Exception("没有传入user");
@@ -40,11 +42,15 @@ public class UserController {
 		
 		String returnS = userService.login(user);
 		
-		map.put("message", returnS);
-		map.put("url","index.html");
-		map.put("user", user);
+		if(returnS.equals("pass")){
+			session.setAttribute("user", user);
+		}
 		
-		return map;
+		data.put("message", returnS);
+		data.put("url","main.html");
+		data.put("user", user);
+		
+		return data;
 		
 	}
 		
