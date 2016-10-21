@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>运输系统 | 注册</title>
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+<!-- Bootstrap 3.3.6 -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="assets/font-awesome-4.6.3/css/font-awesome.min.css">
+<!-- Ionicons -->
+<!-- <link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> -->
+<!-- Theme style -->
+<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+<!-- iCheck -->
+<link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="dist/js/pages/register.js"></script>
+<script src="dist/base.js"></script>
+</head>
+<body class="hold-transition register-page">
+	<div class="register-box">
+		<div class="register-logo">
+			<a href="../../index2.html"><b>运输系统</b></a>
+		</div>
+
+		<div class="register-box-body">
+			<p class="login-box-msg">注册新用户</p>
+
+			<form>
+				<div class="form-group has-feedback">
+					<input name="username" id="username" type="text"
+						class="form-control" placeholder="用户名"> <span
+						class="glyphicon glyphicon-user form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input name="password" id="password" type="password"
+						class="form-control" placeholder="密码"> <span
+						class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input name="password2" id="password2" type="password"
+						class="form-control" placeholder="确认密码"> <span
+						class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input name="supportID" id="supportID" type="password"
+						class="form-control" placeholder="推荐码"> <span
+						class="glyphicon glyphicon-log-in form-control-feedback"></span>
+				</div>
+				<div class="row">
+					<div class="col-xs-8">
+						<div class="checkbox icheck">
+							<label> <input type="checkbox">
+							</label>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<input type="button" class="btn btn-primary btn-block btn-flat"
+							value="注册" onclick="register()">
+					</div>
+				</div>
+			</form>
+
+			我已经拥有账号<a href="login.html" class="text-center">去登录</a>
+		</div>
+		<!-- /.form-box -->
+	</div>
+	<!-- /.register-box -->
+</body>
+</html>

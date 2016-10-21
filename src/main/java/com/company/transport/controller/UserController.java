@@ -1,6 +1,10 @@
 package com.company.transport.controller;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.transport.pojo.User;
 import com.company.transport.service.UserService;
+import com.company.utils.bean.EntityAndMap;
 
 @Controller
 @RequestMapping("/user")
@@ -28,16 +32,16 @@ public class UserController {
 	@RequestMapping(value="/login",method={RequestMethod.POST})
 	public Map login(@RequestBody User user,Map map) throws Exception{
 		
-		logger.info("调用UserController");
-		
 		if(user.getUsername() == null||user.getUsername().equals("")){
 			throw new Exception("没有传入user");
 		}
 		
+		logger.info("用户:"+user.getUsername()+",尝试登录系统，时间："+new Date());
+		
 		String returnS = userService.login(user);
 		
 		map.put("message", returnS);
-		map.put("test", "test");
+		map.put("url","index.html");
 		map.put("user", user);
 		
 		return map;
@@ -46,12 +50,27 @@ public class UserController {
 		
 	
 	
-	@RequestMapping(value="/test",method={RequestMethod.POST})
-	public @ResponseBody User test(@RequestBody User user){
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping(value="/register",method={RequestMethod.POST})
+	public Map register(@RequestBody Map<String, Object> map){
+		
+		Map data  = new HashMap();
+		
+		User user = new User();
+		user = (User)EntityAndMap.mapToBean(map, user);
 		
 		logger.info(user.getUsername());
-		return user;
 		
+		
+		
+		String resutrnS = userService.register(user);
+		
+		data.put("message", resutrnS);
+		data.put("user", user);
+		
+		logger.info("用户:"+user.getUsername()+",尝试注册用户，时间："+new Date());
+		
+		return data;
 	}
 	
 	

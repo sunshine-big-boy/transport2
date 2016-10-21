@@ -15,4 +15,6 @@ public interface UserDao {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+    
+    int updateLastLoginById(User user);
 }
